@@ -14,7 +14,8 @@ public class FilterDecorator extends SmartArrayDecorator {
     }
 
     private Object[] filter() {
-        Object[] newArray = Arrays.copyOf(smartArray.toArray(), smartArray.size());
+        Object[] newArray = Arrays.copyOf(smartArray.toArray(),
+                smartArray.size());
         Object[] finalArray = new Object[smartArray.size()];
         int currIndex = 0;
 
@@ -37,7 +38,8 @@ public class FilterDecorator extends SmartArrayDecorator {
     @Override
     public String operationDescription()
     {
-        return "Filter Decorator, removes element if it doesn't satisfy predicate";
+        return "Filter Decorator, removes element if" +
+                " it doesn't satisfy predicate";
     }
 
     @Override

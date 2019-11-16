@@ -18,8 +18,9 @@ public class BaseArray implements SmartArray {
         return Arrays.copyOf(myArray, myArray.length);
     }
 
+    // return current operation name applied to SmartArray
     @Override
-    public String operationDescription() // return current operation name applied to SmartArray
+    public String operationDescription()
     {
         return "BaseArray";
     }

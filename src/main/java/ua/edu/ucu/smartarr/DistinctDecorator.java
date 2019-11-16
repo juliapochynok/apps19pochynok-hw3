@@ -12,7 +12,8 @@ public class DistinctDecorator extends SmartArrayDecorator {
     private Object[] makeDistinct() {
         Object[] finalArray = new Object[smartArray.size()];
         int currIndex = 0;
-        Object[] newArray = Arrays.copyOf(smartArray.toArray(), smartArray.size());
+        Object[] newArray = Arrays.copyOf(smartArray.toArray(),
+                smartArray.size());
         for (Object o : newArray) {
             if (!includes(finalArray, o)) {
                 finalArray[currIndex] = o;
@@ -24,7 +25,7 @@ public class DistinctDecorator extends SmartArrayDecorator {
 
     private boolean includes(Object[] array, Object value) {
         for (Object el: array) {
-            if ( el != null && value.toString().equals(el.toString())) {
+            if (el != null && value.toString().equals(el.toString())) {
                 return true;
             }
         }

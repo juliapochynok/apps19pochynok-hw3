@@ -59,8 +59,10 @@ public class SmartArrayApp {
         MyPredicate predicateGPAAndYear = new MyPredicate() {
             @Override
             public boolean test(Object student) {
+                double average = 4.0;
                 if (student instanceof Student) {
-                    return ((Student) student).getYear() == 2 && ((Student) student).getGPA() >= 4.0;
+                    return ((Student) student).getYear() == 2
+                            && ((Student) student).getGPA() >= average;
                 }
                 return Boolean.parseBoolean(null);
             }
@@ -68,11 +70,12 @@ public class SmartArrayApp {
 
         MyComparator comparatorSurname = new MyComparator() {
             @Override
-            public int compare(Object student1, Object student2) {
-                if (student1 instanceof Student && student2 instanceof Student) {
-                    return ((Student) student1).getSurname().compareTo(((Student) student2).getSurname());
+            public int compare(Object studentOne, Object studentTwo) {
+                if (studentOne instanceof Student && studentTwo instanceof Student) {
+                    return ((Student) studentOne).getSurname().compareTo(
+                            ((Student) studentTwo).getSurname());
                 }
-                return Integer.parseInt(null);
+                return 1;
             }
         };
 

@@ -14,7 +14,8 @@ public class MapDecorator extends SmartArrayDecorator {
     }
 
     private Object[] map() {
-        Object[] newArray = Arrays.copyOf(smartArray.toArray(), smartArray.size());
+        Object[] newArray = Arrays.copyOf(smartArray.toArray(),
+                smartArray.size());
         for (int i = 0; i < newArray.length; i++) {
                 newArray[i] = function.apply(newArray[i]);
             }

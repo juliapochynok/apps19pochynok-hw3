@@ -15,7 +15,8 @@ public class SortDecorator extends SmartArrayDecorator {
     }
 
     private Object[] compare() {
-        Object[] newArray = Arrays.copyOf(smartArray.toArray(), smartArray.size());
+        Object[] newArray = Arrays.copyOf(smartArray.toArray(),
+                smartArray.size());
         Arrays.sort(newArray, comparator);
         return newArray;
     }
