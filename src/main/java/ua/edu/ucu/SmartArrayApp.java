@@ -8,6 +8,7 @@ import ua.edu.ucu.smartarr.*;
 
 public class SmartArrayApp {
 
+
     public static Integer[]
             filterPositiveIntegersSortAndMultiplyBy2(Integer[] integers) {
                 
@@ -52,17 +53,29 @@ public class SmartArrayApp {
     public static String[]
             findDistinctStudentNamesFrom2ndYearWithGPAgt4AndOrderedBySurname(Student[] students) {
 
+
+        int year = 2;
+        double average = 4.0;
+
         // Hint: to convert Object[] to String[] - use the following code
         //Object[] result = studentSmartArray.toArray();
         //return Arrays.copyOf(result, result.length, String[].class);
 
-        MyPredicate predicateGPAAndYear = new MyPredicate() {
+        MyPredicate predicateYear = new MyPredicate() {
             @Override
             public boolean test(Object student) {
-                double average = 4.0;
                 if (student instanceof Student) {
-                    return ((Student) student).getYear() == 2
-                            && ((Student) student).getGPA() >= average;
+                    return ((Student) student).getYear() == year;
+                }
+                return Boolean.parseBoolean(null);
+            }
+        };
+
+        MyPredicate predicateGPA = new MyPredicate() {
+            @Override
+            public boolean test(Object student) {
+                if (student instanceof Student) {
+                    return ((Student) student).getGPA() >= average;
                 }
                 return Boolean.parseBoolean(null);
             }
@@ -72,10 +85,18 @@ public class SmartArrayApp {
             @Override
             public int compare(Object studentOne, Object studentTwo) {
                 if (studentOne instanceof Student && studentTwo instanceof Student) {
-                    return ((Student) studentOne).getSurname().compareTo(
-                            ((Student) studentTwo).getSurname());
+                    int result = comparing(((Student) studentOne).getSurname(), (
+                            ((Student) studentTwo).getSurname()));
+                    return result;
                 }
                 return 1;
+            }
+
+            private int comparing(String one, String two) {
+                if (one.equals(two)) {return 0;}
+                else {
+                    int compare = one.compareToIgnoreCase(two);
+                    return compare; }
             }
         };
 
@@ -91,11 +112,22 @@ public class SmartArrayApp {
 
         SmartArray studentsArray = new BaseArray(students);
         studentsArray = new DistinctDecorator(studentsArray);
-        studentsArray = new FilterDecorator(studentsArray, predicateGPAAndYear);
+        studentsArray = new FilterDecorator(studentsArray, predicateYear);
+        studentsArray = new FilterDecorator(studentsArray, predicateGPA);
         studentsArray = new SortDecorator(studentsArray, comparatorSurname);
         studentsArray = new MapDecorator(studentsArray, functionName);
 
         Object[] finalArray = studentsArray.toArray();
         return Arrays.copyOf(finalArray, finalArray.length, String[].class);
+    }
+
+    public static void main(String[] args) {
+        BaseArray a = new BaseArray(new Integer[]{1,2,3,4,5});
+        MapDecorator b = new MapDecorator(a,x->(Integer)x*(Integer)x);
+        System.out.println(Arrays.toString(a.toArray()));
+        System.out.println(Arrays.toString(b.toArray()));
+        a.setValue(0, 0); // що це працювало додайте метод setValue(int index){array[index] = 0};
+        System.out.println(Arrays.toString(a.toArray()));
+        System.out.println(Arrays.toString(b.toArray()));
     }
 }

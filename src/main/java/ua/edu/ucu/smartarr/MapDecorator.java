@@ -11,6 +11,7 @@ public class MapDecorator extends SmartArrayDecorator {
     public MapDecorator(SmartArray smartArray, MyFunction function) {
         super(smartArray);
         this.function = function;
+        map();
     }
 
     private Object[] map() {
@@ -32,7 +33,7 @@ public class MapDecorator extends SmartArrayDecorator {
     @Override
     public String operationDescription()
     {
-        return "Map Decorator, Map every element to another object";
+        return "Map Decorator";
     }
 
     @Override

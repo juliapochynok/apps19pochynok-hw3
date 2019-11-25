@@ -11,6 +11,7 @@ public class FilterDecorator extends SmartArrayDecorator {
     public FilterDecorator(SmartArray smartArray, MyPredicate predicate) {
         super(smartArray);
         this.predicate = predicate;
+        filter();
     }
 
     private Object[] filter() {
@@ -38,8 +39,7 @@ public class FilterDecorator extends SmartArrayDecorator {
     @Override
     public String operationDescription()
     {
-        return "Filter Decorator, removes element if" +
-                " it doesn't satisfy predicate";
+        return "Filter Decorator";
     }
 
     @Override

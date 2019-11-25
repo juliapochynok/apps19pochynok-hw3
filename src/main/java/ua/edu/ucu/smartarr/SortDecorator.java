@@ -11,7 +11,7 @@ public class SortDecorator extends SmartArrayDecorator {
     public SortDecorator(SmartArray smartArray, MyComparator comparator) {
         super(smartArray);
         this.comparator = comparator;
-        // compare();
+        compare();
     }
 
     private Object[] compare() {
@@ -31,7 +31,7 @@ public class SortDecorator extends SmartArrayDecorator {
     @Override
     public String operationDescription()
     {
-        return "Sort Decorator, sorts elements using MyComparator";
+        return "Sort Decorator";
     }
 
     @Override

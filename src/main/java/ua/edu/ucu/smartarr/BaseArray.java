@@ -30,4 +30,6 @@ public class BaseArray implements SmartArray {
     {
         return myArray.length;
     }
+
+    public void setValue(int index, Object value) { myArray[index] = value;}
 }

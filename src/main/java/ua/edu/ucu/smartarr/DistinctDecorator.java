@@ -7,6 +7,7 @@ public class DistinctDecorator extends SmartArrayDecorator {
 
     public DistinctDecorator(SmartArray smartArray) {
         super(smartArray);
+        makeDistinct();
     }
 
     private Object[] makeDistinct() {
@@ -42,7 +43,7 @@ public class DistinctDecorator extends SmartArrayDecorator {
     @Override
     public String operationDescription()
     {
-        return "Distinct Decorator, remove duplicates from array";
+        return "Distinct Decorator";
     }
 
     @Override
